@@ -54,8 +54,8 @@ function Connect() {
               to="http://localhost:8000/auth/google"
               className="inline-flex items-end text-sm font-medium relative rounded-md transition h-9 px-4 py-2.5 bg-mainText text-main font-heading hover:bg-opacity-80"
               onClick={() => {
-                handleConnected()
-                handleConnectClick()
+                handleConnected();
+                handleConnectClick();
               }}
             >
               Connect

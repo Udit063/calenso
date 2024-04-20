@@ -86,10 +86,13 @@ const BookingDetails = () => {
         <div className="flex w-3/4 justify-between mt-4 pb-6 border-b border-b-gray-500 font-heading text-mainText">
           <div className="text-[18px] font-heading">Duration -</div>
           <div className="font-heading text-sm">
-            {//@ts-ignore
-              ((new Date(Booking.endTime) - new Date(Booking.startTime)) /
+            {
+              //@ts-ignore
+              (
+                (new Date(Booking.endTime) - new Date(Booking.startTime)) /
                 60000
-              ).toFixed(0)}{" "}
+              ).toFixed(0)
+            }{" "}
             minutes
           </div>
         </div>
@@ -113,8 +116,9 @@ const BookingDetails = () => {
             <a
               href={Booking.event.meetLink}
               target="_blank"
-              className={`${!isOccured ? "w-3/4" : " w-3/4 md:w-1/3"
-                } flex justify-center py-2 rounded-lg font-heading hover:bg-gray-500 hover:text-black duration-200 border-gray-500 border`}
+              className={`${
+                !isOccured ? "w-3/4 sm:w-full" : " w-3/4 md:w-1/3"
+              } flex justify-center py-2 rounded-lg font-heading hover:bg-gray-500 hover:text-black duration-200 border-gray-500 border`}
             >
               Join Event
             </a>

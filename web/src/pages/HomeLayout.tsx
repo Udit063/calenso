@@ -11,6 +11,10 @@ import SideBar from "../components/SideBar";
 function HomeLayout() {
   const dispatch = useDispatch();
 
+  const user = useSelector(
+    (state: RootState) => state.auth.userInfo.profilePicture
+  );
+
   const isMeetingClicked = useSelector(
     (state: RootState) => state.isClicked.isMeetingFormClicked
   );
@@ -43,7 +47,7 @@ function HomeLayout() {
     if (!isConnectClicked && !isConnected) {
       intervalId = setInterval(() => {
         handleConnectClick();
-      }, 2000);
+      }, 10000);
     }
 
     return () => {
@@ -90,7 +94,7 @@ function HomeLayout() {
 
       <div
         className={`bg-second flex h-screen ${
-          isMeetingClicked || (isConnectClicked && !isConnected)
+          (isMeetingClicked && user) || (isConnectClicked && !isConnected)
             ? "blur-sm opacity-90"
             : ""
         }`}
@@ -112,7 +116,7 @@ function HomeLayout() {
         </div>
       </div>
 
-      {isMeetingClicked && <CreateMeeting />}
+      {isMeetingClicked && user && <CreateMeeting />}
       {isConnectClicked && !isConnected && <Connect />}
     </div>
   );
