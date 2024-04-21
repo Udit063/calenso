@@ -56,11 +56,10 @@ function ScheduleBooking() {
   useEffect(() => {
     if (user == null) {
       navigate("/register");
-    }
-    if (user.profilePicture == null) {
+    } else if (user.profilePicture == null) {
       navigate("/home/event-types");
     }
-  }, [user, user.profilePicture]);
+  }, [user, navigate]);
 
   useEffect(() => {
     if (selectedDate) {
