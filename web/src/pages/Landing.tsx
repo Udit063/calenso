@@ -43,7 +43,7 @@ function Landing() {
           <div className="flex flex-row mx-10 sm:mx-16 gap-y-5 gap-x-2 md:gap-x-10">
             <div className="bg-mainText rounded-3xl w-24 md:w-36 h-11 px-1.5 flex items-center">
               <a
-                href="https://github.com/Ankur1493/calenso/"
+                href="https://github.com/Udit063/calenso"
                 target="_blank"
                 className="cursos-pointer w-full"
               >

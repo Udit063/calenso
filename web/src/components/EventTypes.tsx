@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Meeting } from "../interfaces/interfaces";
 import { RootState } from "../store";
 import LoadingComponent from "./Loader";
+import { toast } from "react-toastify";
 
 function EventTypes() {
   const dispatch = useDispatch();
@@ -22,8 +23,16 @@ function EventTypes() {
     (state: RootState) => state?.meetings?.meetings
   );
 
+  const user = useSelector(
+    (state: RootState) => state.auth.userInfo.profilePicture
+  );
+
   const handleMeetingClick = () => {
-    dispatch(IsMeetingFormClicked());
+    if (!user) {
+      toast.error("Please connect to your calendar first");
+    } else {
+      dispatch(IsMeetingFormClicked());
+    }
   };
 
   useEffect(() => {

@@ -11,9 +11,7 @@ import SideBar from "../components/SideBar";
 function HomeLayout() {
   const dispatch = useDispatch();
 
-  const user = useSelector(
-    (state: RootState) => state.auth.userInfo.profilePicture
-  );
+  const user = useSelector((state: RootState) => state.auth.userInfo);
 
   const isMeetingClicked = useSelector(
     (state: RootState) => state.isClicked.isMeetingFormClicked
@@ -94,7 +92,8 @@ function HomeLayout() {
 
       <div
         className={`bg-second flex h-screen ${
-          (isMeetingClicked && user) || (isConnectClicked && !isConnected)
+          (isMeetingClicked && user.profilePicture) ||
+          (isConnectClicked && !isConnected)
             ? "blur-sm opacity-90"
             : ""
         }`}
@@ -116,7 +115,7 @@ function HomeLayout() {
         </div>
       </div>
 
-      {isMeetingClicked && user && <CreateMeeting />}
+      {isMeetingClicked && user.profilePicture && <CreateMeeting />}
       {isConnectClicked && !isConnected && <Connect />}
     </div>
   );

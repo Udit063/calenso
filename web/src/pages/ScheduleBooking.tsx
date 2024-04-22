@@ -56,8 +56,10 @@ function ScheduleBooking() {
   useEffect(() => {
     if (user == null) {
       navigate("/register");
+      toast.error("Please register first");
     } else if (user.profilePicture == null) {
       navigate("/home/event-types");
+      toast.error("Please connect to your calendar first");
     }
   }, [user, navigate]);
 
